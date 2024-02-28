@@ -2,13 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <h1>Welcome to {{title}}!</h1>
-
-    <router-outlet />
-  `,
-  styles: []
+  template: `<ion-app><ion-router-outlet /></ion-app>`,
 })
 export class AppComponent {
-  title = 'angular-v17-modules';
+  title = 'angular-v17';
 }
