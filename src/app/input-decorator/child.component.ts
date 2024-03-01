@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, numberAttribute } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -7,5 +7,6 @@ import { Component, Input } from '@angular/core';
   styles: ``,
 })
 export class ChildComponent {
-  @Input() public text!: string;
+  @Input({ required: true, alias: 'message' }) public text!: string;
+  @Input({ transform: numberAttribute }) public id!: number; // transforming the input from e.g. a route parameter (which is always a string) to a number
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, Signal, model } from '@angular/core';
+import { Component, model } from '@angular/core';
 
 @Component({
   selector: 'app-increment-button',
@@ -7,5 +7,14 @@ import { Component, EventEmitter, Input, Output, Signal, model } from '@angular/
   styles: [],
 })
 export class IncrementButtonComponent {
-  public increment() {}
+  // @Input() public count!: Signal<number>;
+  // @Output() public countChange = new EventEmitter<number>();
+
+  public count = model.required<number>();
+
+  public increment() {
+    // this.countChange.emit(this.count() + 1);
+    // this.count.set(this.count() + 1);
+    this.count.update((count) => count + 1);
+  }
 }

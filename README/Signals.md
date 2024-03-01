@@ -1,5 +1,7 @@
 # Angular Signals
 
+[&larr; Control Flow](./ControlFlow.md)
+
 A signal is a wrapper around a value that notifies interested when that value changes. Signals can contain either primitive values or complex data structures.
 
 The advantage is mostly related to the way Angular handles change detection.
@@ -10,3 +12,5 @@ With signals, we indicate specifically that only a particular thing has changed 
 
 [Signals Docs](https://angular.dev/guide/signals)
 [RxJS Interop (developer preview)](https://angular.dev/guide/signals/rxjs-interop)
+
+[&larr; Control Flow](./ControlFlow.md)

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { CounterDisplayComponent } from './counter-display.component';
 import { IncrementButtonComponent } from './increment-button.component';
 
@@ -8,10 +8,13 @@ import { IncrementButtonComponent } from './increment-button.component';
   imports: [CounterDisplayComponent, IncrementButtonComponent],
   template: `
     <div>
-      <app-counter-display />
-      <app-increment-button />
+      <app-counter-display [count]="count" />
+      <app-increment-button [(count)]="count" />
     </div>
   `,
   styles: [],
 })
-export class CounterWrapperComponent {}
+export class CounterWrapperComponent {
+  // public count = signal(0);
+  public count = 0;
+}

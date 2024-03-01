@@ -9,9 +9,11 @@ import { CommonModule } from '@angular/common';
   template: `
     <div>
       <h1>This is my text</h1>
-      <app-child />
+      <app-child [message]="message" />
     </div>
   `,
   styles: ``,
 })
-export class ParentComponent {}
+export class ParentComponent {
+  public message = 'Hello, World!';
+}

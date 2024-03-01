@@ -8,16 +8,25 @@ import { IonContent } from '@ionic/angular/standalone';
   template: `
     <ion-content>
       <button (click)="increment()">Increment</button>
-      <p>{{ count }}</p>
+      <h1>{{ count() }}</h1>
+      <p>{{ doubleCount() }}</p>
     </ion-content>
   `,
 })
 export class CounterComponent {
-  public count = 0;
+  public count = signal(
+    localStorage.getItem('count') ? parseInt(localStorage.getItem('count')!, 10) : 0
+  );
+  public doubleCount = computed(() => this.count() * 2);
 
-  constructor() {}
+  constructor() {
+    effect(() => {
+      localStorage.setItem('count', this.count().toString());
+    });
+  }
 
   public increment() {
-    this.count = this.count + 1;
+    // this.count.set(this.count() + 1);
+    this.count.update((count) => count + 1);
   }
 }

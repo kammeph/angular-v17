@@ -15,13 +15,32 @@ type Post = {
   imports: [CommonModule, HttpClientModule, IonContent],
   template: `
     <ion-content>
-      @for (post of posts; track post.id) {
-      <h2>{{ post.title }}</h2>
-      <p>{{ post.body }}</p>
+      @for (post of posts; track post.id; let odd = $odd, even = $even, first = $first, last =
+      $last, idx = $index, count = $count) {
+      <h2 [class.odd]="odd" [class.even]="even">{{ idx + 1 }}. {{ post.title }}</h2>
+      <p [class.first]="first" [class.last]="last">{{ post.body }}</p>
       } @empty {
-      <p>Loading...</p>
+      <p>loading...</p>
       }
     </ion-content>
+  `,
+  styles: `
+    h2 {
+      &.odd {
+        color: red;
+      }
+      &.even{
+        color: green;
+      }
+    }
+    p {
+      &.first {
+        font-weight: bold;
+      }
+      &.last {
+        font-style: italic;
+      }
+    }
   `,
 })
 export class PostsComponent {
@@ -39,33 +58,3 @@ export class PostsComponent {
     });
   }
 }
-
-// template: `
-//   <ion-content>
-//     @for (post of posts; track post.id; let odd = $odd, even = $even, first = $first, last =
-//     $last, idx = $index, count = $count) {
-//     <h2 [class.odd]="odd" [class.even]="even">{{ idx + 1 }}. {{ post.title }}</h2>
-//     <p [class.first]="first" [class.last]="last">{{ post.body }}</p>
-//     } @empty {
-//     <p>Loading...</p>
-//     }
-//   </ion-content>
-// `,
-// styles: `
-// h2 {
-//   &.odd {
-//     color: red;
-//   }
-//   &.even{
-//     color: green;
-//   }
-// }
-// p {
-//   &.first {
-//     font-weight: bold;
-//   }
-//   &.last {
-//     font-style: italic;
-//   }
-// }
-// `,
